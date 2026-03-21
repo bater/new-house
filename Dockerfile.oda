@@ -1,0 +1,83 @@
+# Dockerfile for ODA File Converter (DWG <-> DXF conversion)
+#
+# NOTE: ODA File Converter requires manual download from:
+#   https://www.opendesign.com/guestfiles/oda_file_converter
+# Download the Linux (.deb) version and place it in this directory as:
+#   ODAFileConverter_QT6_lnx_8.3.0.deb
+# (adjust filename to match actual downloaded version)
+#
+# Build:
+#   docker build -f Dockerfile.oda -t oda-converter .
+#
+# Run (convert DWG to DXF):
+#   docker run --rm \
+#     -v "$(pwd):/data" \
+#     oda-converter \
+#     "/data" "/data/output" "ACAD2018" "DXF" "0" "1" "*.dwg"
+#
+# ODAFileConverter arguments:
+#   1. Input folder
+#   2. Output folder
+#   3. Output version (ACAD9, ACAD10, ACAD12, ACAD14, ACAD2000, ACAD2004,
+#                       ACAD2007, ACAD2010, ACAD2013, ACAD2018)
+#   4. Output format (DWG, DXF, DXB)
+#   5. Recursive (0=no, 1=yes)
+#   6. Audit (0=no, 1=yes)
+#   7. Input filter (e.g. "*.dwg")
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install dependencies needed by ODA File Converter
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1-mesa-glx \
+    libglu1-mesa \
+    libfreetype6 \
+    libfontconfig1 \
+    libxrender1 \
+    libsm6 \
+    libice6 \
+    libx11-6 \
+    libxext6 \
+    libxcb1 \
+    libxkbcommon0 \
+    libdbus-1-3 \
+    libnss3 \
+    libnspr4 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libdrm2 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libgbm1 \
+    libpango-1.0-0 \
+    libcairo2 \
+    libasound2 \
+    libatspi2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy the ODA File Converter .deb package
+# Download from: https://www.opendesign.com/guestfiles/oda_file_converter
+COPY ODAFileConverter_QT6_lnx_*.deb /tmp/ODAFileConverter.deb
+
+# Install ODA File Converter
+RUN dpkg -i /tmp/ODAFileConverter.deb || apt-get install -f -y \
+    && rm /tmp/ODAFileConverter.deb
+
+# Create output directory
+RUN mkdir -p /data/output
+
+# The converter is typically installed to /usr/bin/ODAFileConverter
+# or /opt/ODAFileConverter/ODAFileConverter
+# Detect and create a symlink if needed
+RUN if [ -f /opt/ODAFileConverter/ODAFileConverter ]; then \
+      ln -sf /opt/ODAFileConverter/ODAFileConverter /usr/local/bin/ODAFileConverter; \
+    fi
+
+WORKDIR /data
+
+ENTRYPOINT ["ODAFileConverter"]
