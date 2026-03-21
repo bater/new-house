@@ -84,12 +84,12 @@ export async function buildFloorPlanFromData() {
 
   // ---- Labels (approximate room positions based on model bounds) ----
   // These are rough estimates - you can fine-tune
-  labels.push(label('廚房 Kitchen', W * 0.18, 1.5, D * 0.7));
-  labels.push(label('客廳 Living Room', W * 0.6, 1.5, D * 0.7));
-  labels.push(label('臥室 Bedroom 1', W * 0.18, 1.5, D * 0.35));
-  labels.push(label('臥室 Bedroom 2', W * 0.7, 1.5, D * 0.35));
-  labels.push(label('浴廁 Bathroom', W * 0.45, 1.5, D * 0.25));
-  labels.push(label('陽台 Balcony', W * 0.92, 1.0, D * 0.65));
+  labels.push(label('廚房 Kitchen', W * 0.82, 1.5, D * 0.3));
+  labels.push(label('客廳 Living Room', W * 0.45, 1.5, D * 0.3));
+  labels.push(label('臥室 Bedroom 1', W * 0.82, 1.5, D * 0.65));
+  labels.push(label('臥室 Bedroom 2', W * 0.35, 1.5, D * 0.65));
+  labels.push(label('浴廁 Bathroom', W * 0.55, 1.5, D * 0.75));
+  labels.push(label('陽台 Balcony', W * 0.08, 1.0, D * 0.35));
 
   return { house, labels };
 }

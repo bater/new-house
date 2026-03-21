@@ -321,9 +321,9 @@ def to_meters(walls, bounds):
             thickness = default_thickness
 
         result.append({
-            "x1": round((w["x1"] - min_x) * scale, 4),
+            "x1": round((max_x - w["x1"]) * scale, 4),  # flip X to match PDF orientation
             "z1": round((max_y - w["y1"]) * scale, 4),  # flip Y
-            "x2": round((w["x2"] - min_x) * scale, 4),
+            "x2": round((max_x - w["x2"]) * scale, 4),  # flip X
             "z2": round((max_y - w["y2"]) * scale, 4),  # flip Y
             "thickness": thickness,
             "type": wall_type,
