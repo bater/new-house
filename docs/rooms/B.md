@@ -57,6 +57,12 @@ nav_order: 2
 - 門扇：
 - 把手 / 鉸鍊：
 
+## 已購家具
+
+| 縮圖 | 品項 | 規格 | 價格 | 詳情 |
+|:---:|---|---|---|:---:|
+| ![LD002](../assets/images/products/LD002.png){: width="120" .hover-lightbox-trigger } | **LD002 壁掛翻轉床（雙人）+ 書櫃 + 移動式桌**<br>合豐家具 | 床墊 190×150×18 cm<br>整體 W184.4×H220×D126.6<br>床承重 200 kg<br>**牆面待決定（BW / BE）** | NT$407,000 | [↗](../references/products/#ld002--壁掛翻轉床雙人--移動式桌--書櫃) |
+
 ## 整體照片 / 靈感圖
 
 <!-- ![](/assets/images/rooms/B/example.jpg) -->
