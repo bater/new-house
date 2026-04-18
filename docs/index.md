@@ -25,7 +25,7 @@ permalink: /
 
 | 房間 | 代號 | 用途 |
 |---|---|---|
-| A | 客廳 + 廚房 | 公共區 (含前陽台側) |
+| A | 客廳 + 廚房 | 公共區 (含陽台側) |
 | B | 主臥房 | 東側 |
 | C | 次臥房 | 西側 |
 | D | 衛浴 | 中央 |
@@ -57,10 +57,10 @@ permalink: /
   <text x="320" y="195" text-anchor="middle" font-size="11" fill="#666" font-style="italic">廚房</text>
   <text x="525" y="195" text-anchor="middle" font-size="11" fill="#666" font-style="italic">客廳</text>
 
-  <!-- 前陽台 (outside AE) -->
-  <rect x="645" y="100" width="60" height="130" fill="#F5F5F5" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="675" y="160" text-anchor="middle" font-size="11" fill="#555">前陽台</text>
-  <text x="675" y="175" text-anchor="middle" font-size="9" fill="#999">(戶外)</text>
+  <!-- 陽台 (outside AE, same N-S extent as A) -->
+  <rect x="645" y="60" width="60" height="170" fill="#F5F5F5" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="675" y="140" text-anchor="middle" font-size="11" fill="#555">陽台</text>
+  <text x="675" y="155" text-anchor="middle" font-size="9" fill="#999">(戶外)</text>
 
   <!-- Room C (次臥) -->
   <rect x="60" y="230" width="200" height="210" fill="#F3E5F5" stroke="#333" stroke-width="1.5"/>
@@ -91,17 +91,17 @@ permalink: /
     <text x="515" y="245" text-anchor="middle">BN</text>
     <text x="648" y="340" text-anchor="start">BE</text>
     <text x="515" y="458" text-anchor="middle">BS</text>
-    <text x="386" y="340" text-anchor="end">BW</text>
+    <text x="398" y="340" text-anchor="start">BW</text>
 
     <text x="160" y="223" text-anchor="middle">CN</text>
-    <text x="268" y="340" text-anchor="start">CE</text>
+    <text x="252" y="340" text-anchor="end">CE</text>
     <text x="160" y="458" text-anchor="middle">CS</text>
     <text x="52" y="340" text-anchor="end">CW</text>
 
-    <text x="325" y="266" text-anchor="middle" font-size="10">DN</text>
-    <text x="398" y="360" text-anchor="start" font-size="10">DE</text>
+    <text x="325" y="285" text-anchor="middle" font-size="10">DN</text>
+    <text x="384" y="315" text-anchor="end" font-size="10">DE</text>
     <text x="325" y="458" text-anchor="middle">DS</text>
-    <text x="252" y="360" text-anchor="end" font-size="10">DW</text>
+    <text x="266" y="315" text-anchor="start" font-size="10">DW</text>
   </g>
 </svg>
 </div>
@@ -114,7 +114,7 @@ permalink: /
 - **D 南北深度 < C 和 B**：D 較短，北側留出空間給走廊
 - **走廊**（黃色帶）位於 D 北側 — C 可經走廊直接通到 B，不必穿過衛浴
 - **南牆共線**：CS、DS、BS 同一水平線
-- **前陽台** 位於 AE 牆外側（戶外）
+- **陽台** 位於 AE 牆外側（戶外）
 
 ## 快速導覽
 
