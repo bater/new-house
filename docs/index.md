@@ -116,6 +116,12 @@ permalink: /
 - **南牆共線**：CS、DS、BS 同一水平線
 - **陽台** 位於 AE 牆外側（戶外）
 
+### 真實建築平面圖（比例參考）
+
+![2F/C戶 建築平面圖 H=360 cm](./assets/images/contract/floor-plan-arch.png){: .hover-lightbox-trigger width="600" }
+
+樓高 **H = 360 cm**，RC 牆 15 cm。完整合約圖面在 [合約文件](./contract/)。
+
 ## 快速導覽
 
 | 區塊 | 用途 |
