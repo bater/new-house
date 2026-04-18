@@ -25,7 +25,10 @@ nav_order: 41
 
 ## 設計決策
 
-- [ ] (待填)
+- [ ] **門框改造成木製引體向上/健身架** — 兩側立柱為鑽孔板（類似 pegboard），可插橫桿做引體向上、雙槓撐體、抬腿等動作
+- [ ] 確認門框改造後的門扇仍能正常開關（或改無門設計）
+- [ ] 立柱深度、孔距、結構承重（需能承受動態體重負荷）
+- [ ] 與設計師討論木材選擇 / 飾面與浴室潮濕環境的相容性
 
 ## 插座 / 開關
 
@@ -52,7 +55,13 @@ nav_order: 41
 
 ## 參考產品 / 圖片
 
-- 
+### 門框健身架 (pullup doorframe)
+
+![DN 門框健身架參考](../assets/images/walls/DN/doorframe-pullup-ref.png){: .hover-lightbox-trigger width="600" }
+
+- **型式**：木製門框兩側立柱帶孔板，橫桿可插入不同高度
+- **動作**：引體向上、雙槓撐體（dip）、懸吊抬腿
+- **類似商品關鍵字**：NOHrD SlimBeam、Pinofit Pullup、wall-mounted wooden pull-up bar
 
 ## 會議紀錄
 

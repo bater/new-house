@@ -25,7 +25,10 @@ nav_order: 13
 
 ## 設計決策
 
-- [ ] (待填)
+- [ ] **主牆做懸吊訓練 / 攀岩式鍊條牆** — 牆面安裝多組埋入式錨點（上排），搭配可拆卸鍊條握把，做懸吊、引體、深蹲輔助等訓練
+- [ ] 壁體結構評估：需能承受動態體重負荷，RC 牆面優先；若為輕隔間需加背板或結構補強
+- [ ] 錨點位置、高度、間距（上排與下排）待與設計師定案
+- [ ] 牆面飾面：深色礦物塗料 / 藝術漆（參考圖的墨綠色）
 
 ## 插座 / 開關
 
@@ -52,7 +55,13 @@ nav_order: 13
 
 ## 參考產品 / 圖片
 
-- 
+### 懸吊訓練牆 (suspension training wall)
+
+![AS 懸吊訓練牆參考](../assets/images/walls/AS/suspension-training-wall-ref.png){: .hover-lightbox-trigger width="500" }
+
+- **型式**：牆面埋入式金屬錨點（上排），鍊條 + 握把懸掛
+- **動作**：懸吊引體、俯身划船、輔助深蹲、核心訓練
+- **類似商品關鍵字**：wall anchor suspension trainer、climbing chain wall、indoor training wall system
 
 ## 會議紀錄
 
