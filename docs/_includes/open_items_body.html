@@ -1,0 +1,30 @@
+{%- assign _newline = "
+" -%}
+{%- assign _lines = include.page_obj.content | split: _newline -%}
+{%- assign _current_section = include.page_obj.title -%}
+{%- assign _show_tag = include.show_tag -%}
+{%- for _line in _lines -%}
+  {%- assign _t = _line | strip -%}
+  {%- assign _h3p = _t | slice: 0, 4 -%}
+  {%- assign _h2p = _t | slice: 0, 3 -%}
+  {%- if _h3p == "### " -%}
+    {%- assign _current_section = _t | slice: 4, 500 | split: "{" | first | strip -%}
+  {%- elsif _h2p == "## " -%}
+    {%- assign _current_section = _t | slice: 3, 500 | split: "{" | first | strip -%}
+  {%- elsif _t contains "- [ ]" -%}
+    {%- assign _item_text = _t | remove_first: "- [ ]" | strip | markdownify | remove: "<p>" | remove: "</p>" -%}
+    {%- unless _item_text contains "(待填)" -%}
+<li>{% if _show_tag %}<span class="tag">{{ _current_section }}</span>{% endif %}{{ _item_text }}</li>
+    {%- endunless -%}
+  {%- elsif _t contains "task-list-item-checkbox" and _t contains "disabled" -%}
+    {%- assign _after = _t | split: '<input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />' -%}
+    {%- if _after.size > 1 -%}
+      {%- assign _payload = _after[1] | split: "</li>" | first -%}
+      {%- if _payload != "" -%}
+        {%- unless _payload contains "(待填)" -%}
+<li>{% if _show_tag %}<span class="tag">{{ _current_section }}</span>{% endif %}{{ _payload }}</li>
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
