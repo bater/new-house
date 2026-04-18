@@ -1,10 +1,14 @@
 source "https://rubygems.org"
 
-# Mirrors the exact versions GitHub Pages uses in production.
-gem "github-pages", group: :jekyll_plugins
+# Local dev only. GitHub Pages uses its own build environment and
+# does not read this Gemfile — production still uses github-pages'
+# pinned versions via the jekyll-remote-theme referenced in _config.yml.
+gem "jekyll", "~> 4.3"
+gem "webrick", "~> 1.8"
 
-# just-the-docs remote theme support
 group :jekyll_plugins do
   gem "jekyll-remote-theme"
   gem "jekyll-seo-tag"
+  gem "jekyll-include-cache"
+  gem "jekyll-relative-links"
 end

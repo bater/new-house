@@ -21,6 +21,11 @@ footer_content: "2F/C戶 · 雲川集合住宅 · 裝修工作區"
 plugins:
   - jekyll-remote-theme
   - jekyll-seo-tag
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
 
 exclude:
   - Gemfile

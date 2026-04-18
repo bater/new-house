@@ -22,3 +22,6 @@ archive/*.pyc
 
 # Claude Code local machine settings
 .claude/settings.local.json
+
+# PII / sensitive documents — kept locally only
+docs/contract/private/

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Clean rebuild + serve the Jekyll site with livereload.
+# Always does a clean rebuild because jekyll-relative-links caches
+# static-file listings and won't rewrite paths to images added mid-session.
+
+set -euo pipefail
+
+export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/4.0.0/bin:$PATH"
+
+cd "$(dirname "$0")/../docs"
+
+echo "→ killing any existing server on :4000"
+lsof -ti:4000 2>/dev/null | xargs -r kill 2>/dev/null || true
+
+echo "→ clearing Jekyll caches"
+rm -rf _site .jekyll-cache .jekyll-metadata
+
+echo "→ starting jekyll serve"
+exec bundle exec jekyll serve --host 127.0.0.1 --port 4000 --livereload
