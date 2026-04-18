@@ -1,11 +1,11 @@
 ---
-title: "AE · A房 東牆（客廳→前陽台）"
+title: "AE · A房 東牆（客廳→陽台）"
 layout: default
 parent: 每面牆
 nav_order: 12
 ---
 
-# AE — A房 東牆（客廳→前陽台）
+# AE — A房 東牆（客廳→陽台）
 {: .no_toc }
 
 <details open markdown="block">
@@ -48,7 +48,18 @@ nav_order: 12
 
 ## 現場照片
 
-<!-- ![描述](/assets/images/walls/AE/example.jpg) -->
+![AE 實景 — 正面](../assets/images/walls/AE/site-ae.png){: .hover-lightbox-trigger width="500" }
+
+![AN + AE 轉角](../assets/images/walls/AN/site-an-ae-corner.png){: .hover-lightbox-trigger width="500" }
+
+**AE 觀察**：
+- 黑框落地推拉 / 摺疊門通往陽台（4 片格子分割）
+- 門框為黑色金屬，含紗網
+- 天花板已安裝**分離式冷氣室內機**（白色）+ 冷媒管 / 排水管 / 可撓管
+  - 需考慮：冷氣管線封板方式、出風方向是否干擾懸吊訓練牆 (AS)
+- AE 兩側白牆上有**插座 + 面板**（左下、右下）
+- 地板為深灰石紋磁磚、踢腳線深色
+
 
 ## 參考產品 / 圖片
 

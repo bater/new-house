@@ -48,7 +48,14 @@ nav_order: 11
 
 ## 現場照片
 
-<!-- ![描述](/assets/images/walls/AN/example.jpg) -->
+![AN + AE 轉角實景](../assets/images/walls/AN/site-an-ae-corner.png){: .hover-lightbox-trigger width="700" }
+
+**觀察**：
+- AN 牆已安裝電箱（淺米色嵌入櫃）+ 對講機/門鈴面板
+- 地板插座區集中在電箱下方、踢腳線附近
+- 天花板為水泥裸頂 + 風管 / 管線外露 → 會安裝簡易天花板
+- 角落踢腳線已安裝深色收邊
+
 
 ## 參考產品 / 圖片
 
