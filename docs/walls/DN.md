@@ -68,6 +68,21 @@ nav_order: 41
 
 ## 參考產品 / 圖片
 
+### AS ↔ DN 滑軌拉門 + 整面穿衣鏡參考
+
+![滑軌拉門 + 整面穿衣鏡參考](../assets/images/walls/DN/sliding-door-mirror-ref.png){: .hover-lightbox-trigger width="500" }
+
+**符合本案需求的關鍵**：
+- ✅ **只有上方滑軌**（穀倉門 barn-door 式），地面無軌道
+- ✅ **整面穿衣鏡 + 深色金屬外框**
+- ✅ 門扇等於一面獨立鏡面牆（非隔間牆的一部分）
+- ✅ 滑開時露出後方空間（示意圖中露出衛浴）
+
+**跟設計師討論**：
+- [ ] 框色：示意圖為黑色金屬 — 是否要搭配室內其他硬體顏色
+- [ ] 軌道懸吊機構：穀倉門滾輪 vs 隱藏式 U 軌（後者更乾淨但較貴）
+- [ ] 門扇高度（是否做到頂天）
+
 ### 門框健身架 (pullup doorframe)
 
 ![DN 門框健身架參考](../assets/images/walls/DN/doorframe-pullup-ref.png){: .hover-lightbox-trigger width="600" }
