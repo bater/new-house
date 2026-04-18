@@ -1,0 +1,35 @@
+title: 新家工作區 · 2F/C戶
+description: 雲川集合住宅 2F/C戶 裝修細節管理
+remote_theme: just-the-docs/just-the-docs
+
+permalink: pretty
+search_enabled: true
+heading_anchors: true
+color_scheme: light
+nav_sort: case_sensitive
+
+aux_links:
+  "GitHub Repo":
+    - "https://github.com/"
+
+aux_links_new_tab: true
+
+footer_content: "2F/C戶 · 雲川集合住宅 · 裝修工作區"
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Default front matter so new pages pick up sensible defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default

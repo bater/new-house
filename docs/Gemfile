@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+# Mirrors the exact versions GitHub Pages uses in production.
+gem "github-pages", group: :jekyll_plugins
+
+# just-the-docs remote theme support
+group :jekyll_plugins do
+  gem "jekyll-remote-theme"
+  gem "jekyll-seo-tag"
+end

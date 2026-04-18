@@ -1,22 +1,21 @@
-# Dependencies & environments
-node_modules/
-.venv/
-.venv312/
-__pycache__/
-
-# Large generated/converted files (keep source DWG/PDF)
-floorplan.dxf
-floorplan.svg
-floorplan_docker.dxf
-floorplan_docker.svg
-floorplan_aspose.*
-*.pyc
-
 # OS
 .DS_Store
+
+# Jekyll (local preview only; GitHub Pages builds remotely)
+docs/_site/
+docs/.jekyll-cache/
+docs/.sass-cache/
+docs/.jekyll-metadata
+docs/Gemfile.lock
+docs/vendor/
+
+# Archived tooling
+archive/**/node_modules/
+archive/**/__pycache__/
+archive/**/.venv/
+archive/**/dist/
+archive/*.pyc
 
 # IDE
 .vscode/
 .idea/
-*.dxf
-.claude/
