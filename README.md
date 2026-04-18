@@ -4,7 +4,7 @@ Personal renovation workspace — collects contract terms, per-wall decisions, r
 
 ## Quick links
 
-- **Live site**: (enable GitHub Pages to populate)
+- **Live site**: <https://bater.github.io/new-house/>
 - **Source**: [`docs/`](./docs) — Jekyll + `just-the-docs` theme
 - **Archive**: [`archive/`](./archive) — earlier attempt at DWG/PDF → Three.js 3D viewer (abandoned in favour of designer-supplied renders)
 
