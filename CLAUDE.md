@@ -12,36 +12,43 @@ The earlier 3D-viewer approach (DWG/PDF → Three.js) has been **archived** — 
 
 ```
 docs/                  # Jekyll site root (GitHub Pages serves from here)
-├── _config.yml        # Jekyll config — remote_theme: just-the-docs
-├── index.md           # Home: ASCII layout + nav
-├── contract/          # Contract docs + source drawings (DWG/PDF)
-├── walls/             # One page per wall: living-north.md, master-east.md, ...
-├── rooms/             # Per-room integration: lighting, flooring, ceiling
-├── references/        # Products, inspiration images, palette
-└── assets/images/     # All uploaded photos & reference images
+├── _config.yml        # remote_theme: just-the-docs; baseurl: /new-house; jekyll-relative-links enabled
+├── Gemfile            # jekyll 4.3 + webrick (local); prod is built by github-pages
+├── index.md           # Home: SVG floor plan + architectural PDF embed
+├── contract/          # Estimate, process, milestones, source drawings (DWG/PDF)
+├── walls/             # 16 walls: AN/AE/AS/AW, BN/BE/..., DW
+├── rooms/             # A/B/C/D per-room integration pages
+├── references/        # products.md, inspiration, palette
+├── budget.md          # Rollup of known spend
+├── open-items.md      # Auto-aggregated TODO list across pages
+├── _includes/         # head_custom (lightbox), open_items_body (aggregator)
+└── assets/images/     # Photos & reference images (walls/<ID>/, rooms/<ID>/, products/, contract/)
+scripts/preview        # Local hot-reload helper (port 4000 + livereload)
 archive/               # Deprecated 3D viewer, Python extraction scripts
 ```
 
 ## Conventions
 
-- **Wall pages**: file name `<room>-<direction>.md` (e.g. `living-north.md`). Copy `docs/walls/_template.md`.
-- **Room pages**: copy `docs/rooms/_template.md`.
+- **Wall pages**: filename is `<ROOM><DIR>.md` — room letter A/B/C/D + direction N/E/S/W (e.g. `AN.md`, `BE.md`). Copy `docs/walls/_template.md`.
+- **Room pages**: `<ROOM>.md` (e.g. `A.md`). Copy `docs/rooms/_template.md`.
 - **Contract changes**: copy `docs/contract/_change-template.md`, number sequentially.
-- **Images**: save under `docs/assets/images/<topic>/`. Reference with `/assets/images/<topic>/file.jpg` (Jekyll permalink).
+- **Images**: save under `docs/assets/images/<topic>/<ID>/`. Reference with **relative** paths like `../assets/images/walls/AN/foo.png` — absolute `/assets/...` breaks on GitHub Pages because of `baseurl: /new-house`. The `jekyll-relative-links` plugin rewrites these to `/new-house/...` at build time.
+- **Lightbox on images**: add `{: .hover-lightbox-trigger width="500" }` — `_includes/head_custom.html` wires up the preview-on-hover behaviour.
+- **Open items**: any `- [ ]` task list line is auto-pulled into `/open-items/`. Walls get grouped under their room; product-page items keep a section tag. Lines containing `(待填)` are skipped.
+- **Private files**: anything with PII (national ID, cert scans) goes under `docs/contract/private/` (gitignored).
 - **Chinese-first content** — UI labels and page titles in 繁中.
 
-## Local preview (optional)
+## Local preview
 
-GitHub Pages builds automatically on push. For local preview:
+Use the helper script (clean rebuild + livereload):
 ```bash
-cd docs
-bundle init && bundle add jekyll webrick && bundle exec jekyll serve
+./scripts/preview
 ```
-(Not required — push and view on the Pages URL is simplest.)
+Then open `http://127.0.0.1:4000/new-house/`. Ruby 4.x + the Gemfile's jekyll 4.3 + webrick; don't mix in the `github-pages` gem (ffi incompat with Ruby 4).
 
 ## GitHub Pages setup
 
-Repo Settings → Pages → Source: `Deploy from a branch` → Branch: `main` / folder: `/docs`.
+Repo: `bater/new-house`. Settings → Pages → Source: `Deploy from a branch` → Branch: `main` / folder: `/docs`. Live URL: `https://bater.github.io/new-house/`.
 
 ## Archive
 
