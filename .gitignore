@@ -19,3 +19,6 @@ archive/*.pyc
 # IDE
 .vscode/
 .idea/
+
+# Claude Code local machine settings
+.claude/settings.local.json

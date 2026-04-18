@@ -1,0 +1,55 @@
+<style>
+  .hover-lightbox-trigger { cursor: zoom-in; transition: outline 0.15s; }
+  .hover-lightbox-trigger:hover { outline: 2px solid #1565C0; }
+
+  .hover-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    animation: hoverLightboxFade 0.12s ease-out;
+  }
+  .hover-lightbox-overlay img {
+    max-width: 92vw;
+    max-height: 92vh;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    background: #fff;
+  }
+  @keyframes hoverLightboxFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let overlay = null;
+
+    const show = (src) => {
+      hide();
+      overlay = document.createElement('div');
+      overlay.className = 'hover-lightbox-overlay';
+      const img = document.createElement('img');
+      img.src = src;
+      overlay.appendChild(img);
+      document.body.appendChild(overlay);
+    };
+    const hide = () => {
+      if (overlay) { overlay.remove(); overlay = null; }
+    };
+
+    document.querySelectorAll('.hover-lightbox-trigger').forEach((el) => {
+      const full = el.getAttribute('data-full') || el.src || el.getAttribute('src');
+      el.addEventListener('mouseenter', () => show(full));
+      el.addEventListener('mouseleave', hide);
+    });
+
+    // Safety: hide on scroll / escape
+    window.addEventListener('scroll', hide, { passive: true });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+  });
+</script>
