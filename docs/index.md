@@ -127,7 +127,7 @@ permalink: /
 
 ## 使用方式
 
-- **上傳圖片**：丟到 `docs/assets/images/<主題>/`，用 `![說明](/assets/images/主題/檔名.jpg)` 引用
+- **上傳圖片**：丟到 `docs/assets/images/<主題>/`，用 `![說明](../assets/images/主題/檔名.jpg)` 引用（相對路徑 — 從 `walls/`、`rooms/` 等子資料夾的頁面往上一層）
 - **修改牆面頁**：直接編輯 `walls/<代號>.md`（如 `walls/AN.md`）
 - **新增變更單**：複製 `contract/_change-template.md`
 - **與設計師分享**：整份網站發佈到 GitHub Pages，直接丟連結

@@ -20,7 +20,7 @@ nav_order: 1
 
 **合豐家具 Hefeng Furniture** · NT$138,000 · 用於 **[A 房 · 客廳](../rooms/A)**
 
-![TA-175](/assets/images/products/TA-175.png)
+![TA-175](../assets/images/products/TA-175.png){: .hover-lightbox-trigger }
 
 | 項目 | 內容 |
 |---|---|

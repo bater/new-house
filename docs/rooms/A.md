@@ -61,7 +61,7 @@ nav_order: 1
 
 | 縮圖 | 品項 | 規格 | 價格 | 詳情 |
 |:---:|---|---|---|:---:|
-| ![TA-175](/assets/images/products/TA-175.png){: width="120" .hover-lightbox-trigger } | **TA-175 多功能升降茶几/餐桌**<br>合豐家具 | 茶几：76×126×H28.5<br>餐桌：76×236×H85（6–10 人）<br>顏色：待確認 | NT$138,000 | [↗](/references/products/#ta-175--多功能升降茶几--餐桌) |
+| ![TA-175](../assets/images/products/TA-175.png){: width="120" .hover-lightbox-trigger } | **TA-175 多功能升降茶几/餐桌**<br>合豐家具 | 茶几：76×126×H28.5<br>餐桌：76×236×H85（6–10 人）<br>顏色：待確認 | NT$138,000 | [↗](../references/products/#ta-175--多功能升降茶几--餐桌) |
 
 ## 整體照片 / 靈感圖
 

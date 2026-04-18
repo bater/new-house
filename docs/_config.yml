@@ -1,5 +1,7 @@
 title: 永豐泰雲川2C
 description: 雲川集合住宅 2F/C戶 裝修細節管理
+url: "https://bater.github.io"
+baseurl: "/new-house"
 remote_theme: just-the-docs/just-the-docs
 
 permalink: pretty

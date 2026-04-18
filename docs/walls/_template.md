@@ -50,12 +50,12 @@ nav_order: 99
 
 ## 現場照片
 
-![描述](/assets/images/walls/範例.jpg)
+![描述](../assets/images/walls/範例.jpg){: .hover-lightbox-trigger }
 
 ## 參考產品 / 圖片
 
 - [產品連結](#) — 說明
-- ![參考](/assets/images/references/範例.jpg)
+- ![參考](../assets/images/references/範例.jpg){: .hover-lightbox-trigger }
 
 ## 會議紀錄
 

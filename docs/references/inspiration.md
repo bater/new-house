@@ -11,5 +11,5 @@ nav_order: 2
 
 ## 整體氛圍
 
-![](/assets/images/inspiration/範例.jpg)
+![](../assets/images/inspiration/範例.jpg){: .hover-lightbox-trigger }
 *來源 / 喜歡的點 / 可套用到哪面牆*

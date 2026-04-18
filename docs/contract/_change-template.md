@@ -24,6 +24,6 @@ nav_order: 99
 
 ## 附件 / 照片
 
-![](/assets/images/contract/範例.jpg)
+![](../assets/images/contract/範例.jpg){: .hover-lightbox-trigger }
 
 ## 簽認
