@@ -18,3 +18,5 @@ floorplan_aspose.*
 # IDE
 .vscode/
 .idea/
+*.dxf
+.claude/
