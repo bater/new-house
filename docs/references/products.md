@@ -76,7 +76,7 @@ nav_order: 1
 
 ### LD002 · 壁掛翻轉床（雙人）+ 移動式桌 + 書櫃
 
-**合豐家具 Hefeng Furniture** · NT$407,000 · 用於 **[B 房 · 主臥](../rooms/B)** · 牆面待定（BW 或 BE）
+**合豐家具 Hefeng Furniture** · NT$407,000 · 用於 **[B 房 · 主臥](../rooms/B)** · 安裝於 **[BE 牆](../walls/BE)**（BW 牆為衣櫃）
 
 ![LD002](../assets/images/products/LD002.png){: .hover-lightbox-trigger }
 
@@ -103,7 +103,7 @@ nav_order: 1
 | 原廠床墊 (190×150×18) | NT$32,700 |
 
 **待確認**：
-- [ ] 安裝於哪面牆（BW 或 BE）— 與房間動線配合
+- [x] ~~安裝於哪面牆~~ — **確認 BE**（BW 為衣櫃）
 - [ ] 邊桌配色（白 / 灰）
 - [ ] 選配項目：LED、床頭片、USB、原廠床墊
 - [ ] 結構承重評估（200 kg 床板 + 動態負荷）
