@@ -12,10 +12,11 @@ permalink: /
 裝修細節工作區 — 收集合約條款、每面牆的細部決策、參考產品與靈感圖，方便與設計師討論對齊。
 {: .fs-5 .fw-300 }
 
-[合約文件](./contract/){: .btn .btn-primary .mr-2 }
-[每面牆](./walls/){: .btn .mr-2 }
-[房間](./rooms/){: .btn .mr-2 }
-[參考](./references/){: .btn }
+[變更日誌](./changelog/){: .btn .btn-primary .mr-2 }
+[待確認](./open-items/){: .btn .mr-2 }
+[預算](./budget/){: .btn .mr-2 }
+[合約](./contract/){: .btn .mr-2 }
+[房間](./rooms/){: .btn }
 
 ---
 
@@ -58,10 +59,11 @@ permalink: /
   <text x="320" y="195" text-anchor="middle" font-size="11" fill="#666" font-style="italic">廚房</text>
   <text x="525" y="195" text-anchor="middle" font-size="11" fill="#666" font-style="italic">客廳</text>
 
-  <!-- 陽台 (outside AE, same N-S extent as A) -->
-  <rect x="645" y="60" width="60" height="170" fill="#F5F5F5" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="675" y="140" text-anchor="middle" font-size="11" fill="#555">陽台</text>
-  <text x="675" y="155" text-anchor="middle" font-size="9" fill="#999">(戶外)</text>
+  <!-- Room F (陽台, outside AE, same N-S extent as A) -->
+  <rect x="645" y="60" width="60" height="170" fill="#FFF3E0" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="675" y="130" text-anchor="middle" font-size="18" font-weight="bold" fill="#E65100">F</text>
+  <text x="675" y="150" text-anchor="middle" font-size="10" fill="#333">陽台</text>
+  <text x="675" y="165" text-anchor="middle" font-size="8" fill="#999">(戶外)</text>
 
   <!-- Room C (次臥) -->
   <rect x="60" y="230" width="200" height="210" fill="#F3E5F5" stroke="#333" stroke-width="1.5"/>
@@ -113,9 +115,9 @@ permalink: /
 - **C 房向西突出**：全棟總寬 **C + D + B > A**（L 形）
 - **C 寬度 > D 寬度**
 - **D 南北深度 < C 和 B**：D 較短，北側留出空間給走廊
-- **走廊**（黃色帶）位於 D 北側 — C 可經走廊直接通到 B，不必穿過衛浴
+- **走廊**（黃色帶）位於 D 北側 — 也是 **B/C 共用更衣區**（見 [D 房](./rooms/D/)）
 - **南牆共線**：CS、DS、BS 同一水平線
-- **陽台** 位於 AE 牆外側（戶外）
+- **F 陽台** 位於 AE 牆外側（戶外，獨立成房）— 容納洗衣機 / 冷氣外機 / 貓砂盆 / 熱水器
 
 ### 真實建築平面圖（比例參考）
 
@@ -127,14 +129,18 @@ permalink: /
 
 | 區塊 | 用途 |
 |---|---|
-| [合約文件](./contract/) | 合約掃描、條款備註、設計圖源檔 |
-| [每面牆](./walls/) | 16 面牆每面一頁 — 尺寸、插座、櫃體、燈具、照片 |
-| [房間](./rooms/) | A/B/C/D 四房整合視角 — 地坪、天花、燈光配置 |
+| [變更日誌](./changelog/) | 時間序看哪些區塊有新細節（可個別標示已讀 / 分享單筆永久連結） |
+| [待確認事項](./open-items/) | 自動彙整所有頁面的 `- [ ]` 待辦，按房間分組 |
+| [預算總覽](./budget/) | 已購家具、裝修、家電合計與未納入項目 |
+| [合約文件](./contract/) | 估價單、設計流程、里程碑、DWG/PDF 原檔 |
+| [房間](./rooms/) | A/B/C/D/F 五房整合視角 — 地坪、天花、燈光、空調；每房下展開其 4 面牆 |
 | [參考](./references/) | 參考產品連結、靈感圖、色卡 |
 
 ## 使用方式
 
-- **上傳圖片**：丟到 `docs/assets/images/<主題>/`，用 `![說明](../assets/images/主題/檔名.jpg)` 引用（相對路徑 — 從 `walls/`、`rooms/` 等子資料夾的頁面往上一層）
-- **修改牆面頁**：直接編輯 `walls/<代號>.md`（如 `walls/AN.md`）
-- **新增變更單**：複製 `contract/_change-template.md`
+- **上傳圖片**：丟到 `docs/assets/images/<主題>/`，用 `![說明](../assets/images/主題/檔名.jpg)` 引用
+- **修改牆面頁**：編輯 `walls/<代號>.md`（如 `walls/AN.md`）
+- **跨頁連結**：用 `[連結](../walls/AN.md)` 形式（帶 `.md` 讓 jekyll-relative-links 改寫為正確 URL）
+- **變更日誌刷新**：commit 後執行 `./scripts/gen-changelog` 再 push
+- **本地預覽**：`./scripts/preview`（clean rebuild + livereload）
 - **與設計師分享**：整份網站發佈到 GitHub Pages，直接丟連結

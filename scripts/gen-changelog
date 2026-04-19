@@ -1,0 +1,297 @@
+#!/usr/bin/env python3
+"""Generate docs/changelog.md from git log.
+
+Each commit becomes a styled block with a data-hash attribute; client-side
+JS on the page tracks which hashes the user has "read" via a cookie and
+highlights unread ones.
+
+Run before committing if you want the changelog to reflect the latest.
+"""
+import subprocess, html, sys, pathlib
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+OUT = ROOT / "docs" / "changelog.md"
+
+SEP_COMMIT = "\x1e"  # RS
+SEP_FIELD  = "\x1f"  # US
+
+def git_log():
+    fmt = SEP_FIELD.join(["%H", "%h", "%ci", "%s", "%b"]) + SEP_COMMIT
+    r = subprocess.run(
+        ["git", "log", f"--pretty=format:{fmt}"],
+        cwd=ROOT, capture_output=True, text=True, encoding="utf-8", check=True,
+    )
+    for raw in r.stdout.split(SEP_COMMIT):
+        raw = raw.strip("\n")
+        if not raw.strip(): continue
+        parts = raw.split(SEP_FIELD)
+        if len(parts) < 5: continue
+        full, short, ci, subj, body = parts[0], parts[1], parts[2], parts[3], parts[4]
+        date = ci[:10]
+        time = ci[11:16]  # HH:MM
+        yield dict(full=full, short=short, date=date, time=time, ci=ci, subj=subj, body=body.strip())
+
+def files_for(full_hash):
+    r = subprocess.run(
+        ["git", "show", "--name-only", "--pretty=format:", full_hash],
+        cwd=ROOT, capture_output=True, text=True, encoding="utf-8", check=True,
+    )
+    return [l for l in r.stdout.strip().split("\n") if l and not l.startswith("commit ")]
+
+def strip_coauthor(body):
+    lines = []
+    for ln in body.split("\n"):
+        if ln.strip().lower().startswith("co-authored-by:"):
+            continue
+        lines.append(ln)
+    return "\n".join(lines).strip()
+
+def classify_path(p):
+    # Return (label, url-without-baseurl) for the affected area, or None to skip display
+    if p.startswith("docs/walls/") and p.endswith(".md"):
+        stem = pathlib.Path(p).stem
+        if stem == "index": return ("牆面總表", "/walls/")
+        return (f"牆 {stem}", f"/walls/{stem}/")
+    if p.startswith("docs/rooms/") and p.endswith(".md"):
+        stem = pathlib.Path(p).stem
+        if stem == "index": return ("房間目錄", "/rooms/")
+        return (f"房間 {stem}", f"/rooms/{stem}/")
+    if p.startswith("docs/contract/estimate"):
+        return ("工程估價單", "/contract/estimate/")
+    if p.startswith("docs/contract/process"):
+        return ("設計流程", "/contract/process/")
+    if p.startswith("docs/contract/"):
+        return ("合約", "/contract/")
+    if p.startswith("docs/references/products"):
+        return ("產品", "/references/products/")
+    if p.startswith("docs/references/"):
+        return ("參考", "/references/")
+    if p == "docs/budget.md":
+        return ("預算", "/budget/")
+    if p == "docs/open-items.md":
+        return ("待確認", "/open-items/")
+    if p == "docs/changelog.md":
+        return ("變更日誌", "/changelog/")
+    if p == "docs/index.md":
+        return ("首頁", "/")
+    if p.startswith("docs/assets/images/"):
+        return None  # counted separately
+    return None
+
+def area_tags(files):
+    seen, out = set(), []
+    img_count = 0
+    for f in files:
+        if f.startswith("docs/assets/images/"):
+            img_count += 1
+            continue
+        entry = classify_path(f)
+        if entry and entry[0] not in seen:
+            seen.add(entry[0])
+            out.append(entry)  # (label, url)
+    if img_count:
+        out.append((f"圖片 ×{img_count}", None))  # no link
+    return out
+
+HEADER = """---
+title: 變更日誌
+layout: default
+nav_order: 2
+permalink: /changelog/
+---
+
+# 變更日誌
+{: .no_toc }
+
+本頁由 `scripts/gen-changelog` 從 git commit history 生成。藍色邊框為**你尚未讀過的變更**，點右上「標示全部為已讀」後就只剩下新的改動突顯。已讀狀態存在瀏覽器 cookie，一年有效。
+{: .fs-5 .fw-300 }
+
+<style>
+  .cl-actions {
+    position: sticky; top: 0.5em; margin: 1em 0; padding: 0.6em 1em;
+    background: #fff; border: 1px solid #d5dde8; border-radius: 6px;
+    display: flex; gap: 0.6em; align-items: center; z-index: 10;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .cl-actions button {
+    padding: 0.35em 0.9em; cursor: pointer; border-radius: 4px;
+    border: 1px solid #1565C0; background: #fff; color: #1565C0;
+    font-size: 0.9em;
+  }
+  .cl-actions button:hover { background: #1565C0; color: #fff; }
+  .cl-count { margin-left: auto; color: #777; font-size: 0.88em; }
+  .cl-count b { color: #1565C0; }
+
+  .cl-day { margin: 1.5em 0 0.3em; padding-bottom: 0.2em; border-bottom: 1px solid #e3e8ef; font-size: 1rem; color: #555; font-weight: 600; }
+
+  .cl-commit {
+    position: relative;
+    border-left: 4px solid #d5dde8;
+    padding: 0.7em 2.8em 0.7em 1em; margin: 0.6em 0;
+    background: #fafbfc; border-radius: 0 4px 4px 0;
+    transition: all 0.2s;
+  }
+  .cl-commit.new {
+    border-left-color: #1565C0;
+    background: #eef5ff;
+  }
+  .cl-commit.new .cl-subj::before {
+    content: "NEW";
+    display: inline-block;
+    background: #1565C0; color: #fff;
+    font-size: 0.72em; padding: 1px 6px; border-radius: 3px;
+    margin-right: 7px; vertical-align: middle; font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .cl-toggle {
+    position: absolute; top: 8px; right: 8px;
+    border: 1px solid #c5cfdd; background: #fff; color: #4a5566;
+    font-size: 0.72em; font-weight: 600; letter-spacing: 0.04em;
+    padding: 2px 8px; border-radius: 3px; cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .cl-toggle:hover { border-color: #1565C0; color: #1565C0; }
+  .cl-commit.new .cl-toggle { border-color: #1565C0; color: #1565C0; }
+  .cl-commit.new .cl-toggle:hover { background: #1565C0; color: #fff; }
+
+  /* Permalink anchor on meta line */
+  .cl-meta a.cl-perma {
+    color: inherit; text-decoration: none;
+    border-bottom: 1px dotted #bbb;
+    padding-bottom: 1px;
+  }
+  .cl-meta a.cl-perma:hover { color: #1565C0; border-bottom-color: #1565C0; }
+
+  /* Highlight when linked to via URL hash (#abc1234) */
+  .cl-commit:target {
+    border-left-color: #e8a100;
+    background: #fff7e0;
+    box-shadow: 0 0 0 2px rgba(232, 161, 0, 0.35);
+    scroll-margin-top: 72px;
+    animation: cl-flash 1.4s ease-out;
+  }
+  @keyframes cl-flash {
+    0%   { background: #ffe680; }
+    100% { background: #fff7e0; }
+  }
+  .cl-meta { color: #888; font-size: 0.82em; margin-bottom: 0.25em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .cl-subj { font-weight: 600; font-size: 1.02em; }
+  .cl-body { color: #4a5566; font-size: 0.92em; margin-top: 0.4em; white-space: pre-wrap; }
+  .cl-tags { margin-top: 0.5em; display: flex; flex-wrap: wrap; gap: 4px; }
+  .cl-tag {
+    background: #eaf1ff; color: #1a4a8a; padding: 1px 8px; border-radius: 3px;
+    font-size: 0.78em; font-weight: 500; white-space: nowrap;
+  }
+  a.cl-tag-link { text-decoration: none; }
+  a.cl-tag-link:hover { background: #1565C0; color: #fff; }
+</style>
+
+<div class="cl-actions">
+  <button id="cl-mark-all">標示全部為已讀</button>
+  <button id="cl-unmark-all">重設為未讀</button>
+  <span class="cl-count"><b id="cl-new-count">…</b> 項未讀 / <span id="cl-total-count">…</span> 項</span>
+</div>
+
+"""
+
+FOOTER_JS = """
+<script>
+(function () {
+  var COOKIE = 'cl_read';
+  function read() {
+    var m = document.cookie.match(/(?:^|; )cl_read=([^;]*)/);
+    return m ? decodeURIComponent(m[1]).split(',').filter(Boolean) : [];
+  }
+  function write(arr) {
+    var d = new Date(); d.setTime(d.getTime() + 365 * 864e5);
+    document.cookie = 'cl_read=' + encodeURIComponent(arr.join(',')) +
+      '; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+  }
+  function refresh() {
+    var set = {}; read().forEach(function (h) { set[h] = 1; });
+    var items = document.querySelectorAll('.cl-commit');
+    var n = 0;
+    items.forEach(function (el) {
+      var isRead = !!set[el.dataset.hash];
+      if (isRead) el.classList.remove('new');
+      else { el.classList.add('new'); n++; }
+      var btn = el.querySelector('.cl-toggle');
+      if (btn) btn.textContent = isRead ? '已讀 ✓' : '標為已讀';
+    });
+    document.getElementById('cl-new-count').textContent = n;
+    document.getElementById('cl-total-count').textContent = items.length;
+  }
+  function toggle(hash) {
+    var cur = read();
+    var idx = cur.indexOf(hash);
+    if (idx >= 0) cur.splice(idx, 1);
+    else cur.push(hash);
+    write(cur);
+    refresh();
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    refresh();
+    document.querySelectorAll('.cl-commit').forEach(function (el) {
+      var btn = el.querySelector('.cl-toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggle(el.dataset.hash);
+      });
+    });
+    document.getElementById('cl-mark-all').addEventListener('click', function () {
+      var all = Array.prototype.map.call(document.querySelectorAll('.cl-commit'),
+        function (e) { return e.dataset.hash; });
+      write(all); refresh();
+    });
+    document.getElementById('cl-unmark-all').addEventListener('click', function () {
+      write([]); refresh();
+    });
+  });
+})();
+</script>
+"""
+
+def main():
+    commits = list(git_log())
+    if not commits:
+        print("No commits found.", file=sys.stderr)
+        sys.exit(1)
+
+    out = [HEADER]
+    current_date = None
+    for c in commits:
+        body = strip_coauthor(c["body"])
+        files = files_for(c["full"])
+        tags = area_tags(files)
+
+        if c["date"] != current_date:
+            out.append(f'\n<h2 class="cl-day" markdown="0">{c["date"]}</h2>\n')
+            current_date = c["date"]
+
+        out.append(f'<div class="cl-commit" id="{c["short"]}" data-hash="{c["short"]}">')
+        out.append(f'  <button type="button" class="cl-toggle" aria-label="切換已讀/未讀"></button>')
+        out.append(f'  <div class="cl-meta"><a class="cl-perma" href="#{c["short"]}" title="複製此變更的永久連結">{c["short"]}</a> · {c["date"]} {c["time"]}</div>')
+        out.append(f'  <div class="cl-subj">{html.escape(c["subj"])}</div>')
+        if body:
+            out.append(f'  <div class="cl-body">{html.escape(body)}</div>')
+        if tags:
+            tag_parts = []
+            for label, url in tags:
+                label_esc = html.escape(label)
+                if url:
+                    tag_parts.append(
+                        f'<a class="cl-tag cl-tag-link" href="{{{{ \'{url}\' | relative_url }}}}">{label_esc}</a>'
+                    )
+                else:
+                    tag_parts.append(f'<span class="cl-tag">{label_esc}</span>')
+            out.append(f'  <div class="cl-tags">{"".join(tag_parts)}</div>')
+        out.append("</div>\n")
+
+    out.append(FOOTER_JS)
+    OUT.write_text("\n".join(out), encoding="utf-8")
+    print(f"Wrote {OUT} ({len(commits)} commits)")
+
+if __name__ == "__main__":
+    main()
