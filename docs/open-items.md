@@ -1,7 +1,7 @@
 ---
 title: 待確認事項
 layout: default
-nav_order: 6
+nav_order: 2
 permalink: /open-items/
 ---
 

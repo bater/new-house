@@ -1,8 +1,9 @@
 ---
 title: "BE · B房 東牆（主臥）"
 layout: default
-parent: 每面牆
-nav_order: 22
+parent: "B 房 · 主臥房"
+grand_parent: 房間
+nav_order: 2
 ---
 
 # BE — B房 東牆（主臥）

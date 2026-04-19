@@ -3,6 +3,7 @@ title: "C 房 · 次臥房"
 layout: default
 parent: 房間
 nav_order: 3
+has_children: true
 ---
 
 # C 房 · 次臥房

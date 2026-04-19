@@ -1,7 +1,7 @@
 ---
 title: 房間
 layout: default
-nav_order: 4
+nav_order: 5
 has_children: true
 permalink: /rooms/
 ---
@@ -18,3 +18,4 @@ permalink: /rooms/
 - [B 房 — 主臥房](./B)
 - [C 房 — 次臥房](./C)
 - [D 房 — 衛浴](./D)
+- [F 房 — 陽台](./F)（E 保留作方位，故跳過）

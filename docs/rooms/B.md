@@ -3,6 +3,7 @@ title: "B 房 · 主臥房"
 layout: default
 parent: 房間
 nav_order: 2
+has_children: true
 ---
 
 # B 房 · 主臥房

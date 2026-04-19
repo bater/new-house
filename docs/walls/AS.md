@@ -1,8 +1,9 @@
 ---
 title: "AS · A房 南牆（客廳）"
 layout: default
-parent: 每面牆
-nav_order: 13
+parent: "A 房 · 客廳 + 廚房"
+grand_parent: 房間
+nav_order: 3
 ---
 
 # AS — A房 南牆（客廳）

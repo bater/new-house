@@ -3,6 +3,7 @@ title: "D 房 · 衛浴"
 layout: default
 parent: 房間
 nav_order: 4
+has_children: true
 ---
 
 # D 房 · 衛浴

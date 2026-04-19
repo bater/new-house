@@ -1,8 +1,9 @@
 ---
 title: "BW · B房 西牆（主臥→衛浴）"
 layout: default
-parent: 每面牆
-nav_order: 24
+parent: "B 房 · 主臥房"
+grand_parent: 房間
+nav_order: 4
 ---
 
 # BW — B房 西牆（主臥→衛浴）

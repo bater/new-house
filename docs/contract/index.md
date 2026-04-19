@@ -1,7 +1,7 @@
 ---
 title: 合約文件
 layout: default
-nav_order: 2
+nav_order: 4
 has_children: true
 permalink: /contract/
 ---

@@ -1,8 +1,9 @@
 ---
 title: "DW · D房 西牆（衛浴→次臥）"
 layout: default
-parent: 每面牆
-nav_order: 44
+parent: "D 房 · 衛浴"
+grand_parent: 房間
+nav_order: 4
 ---
 
 # DW — D房 西牆（衛浴→次臥）

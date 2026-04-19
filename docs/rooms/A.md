@@ -3,6 +3,7 @@ title: "A 房 · 客廳 + 廚房"
 layout: default
 parent: 房間
 nav_order: 1
+has_children: true
 ---
 
 # A 房 · 客廳 + 廚房

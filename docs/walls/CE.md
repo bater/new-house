@@ -1,8 +1,9 @@
 ---
 title: "CE · C房 東牆（次臥→衛浴）"
 layout: default
-parent: 每面牆
-nav_order: 32
+parent: "C 房 · 次臥房"
+grand_parent: 房間
+nav_order: 2
 ---
 
 # CE — C房 東牆（次臥→衛浴）

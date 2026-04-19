@@ -1,8 +1,9 @@
 ---
 title: "CS · C房 南牆（次臥）"
 layout: default
-parent: 每面牆
-nav_order: 33
+parent: "C 房 · 次臥房"
+grand_parent: 房間
+nav_order: 3
 ---
 
 # CS — C房 南牆（次臥）

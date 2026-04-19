@@ -1,8 +1,9 @@
 ---
 title: "AW · A房 西牆（廚房）"
 layout: default
-parent: 每面牆
-nav_order: 14
+parent: "A 房 · 客廳 + 廚房"
+grand_parent: 房間
+nav_order: 4
 ---
 
 # AW — A房 西牆（廚房）
