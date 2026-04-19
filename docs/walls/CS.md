@@ -56,7 +56,13 @@ nav_order: 3
 
 ## 現場照片
 
-<!-- ![描述](/assets/images/walls/CS/example.jpg) -->
+![CS + CW 角落實景（左為 CS 對外窗，右為 CW）](../assets/images/rooms/C/site-cs-cw-corner.png){: .hover-lightbox-trigger width="500" }
+
+**觀察**：
+- **CS 窗為黑框細長直立窗**（非大面橫窗）— 可開啟面積確實有限，對應 [建商窗戶加大](../rooms/C/#建商窗戶加大採光通風) 需求
+- 外景：**面街道**（可見對面商家招牌「港」字），採光佳但可能有噪音 / 隱私問題
+- 白牆、深色踢腳線收邊、深灰石紋磁磚（與全家同系列）
+- 牆上綠色 X 為**驗屋瑕疵**，待建商修繕
 
 ## 參考產品 / 圖片
 
