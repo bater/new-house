@@ -85,7 +85,7 @@ nav_order: 1
 
 **燦坤 3C（TK3C）提貨券已購** · NT$47,872 · 用於 **[A 房 · 廚房 AW](../walls/AW.md)**（靠 AS 側）
 
-![NR-E507XT-W1 規格表](../assets/images/products/panasonic-NR-E507XT-W1-spec.png){: .hover-lightbox-trigger width="500" }
+![NR-E507XT-W1 規格表]({{ '/assets/images/products/panasonic-NR-E507XT-W1-spec.png' | relative_url }}){: .hover-lightbox-trigger width="500" }
 
 | 項目 | 內容 |
 |---|---|
