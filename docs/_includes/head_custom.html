@@ -1,4 +1,27 @@
 <style>
+  .site-gate-overlay {
+    position: fixed; inset: 0; background: #1a1f2a; color: #e6e9ef;
+    z-index: 100000; display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+  }
+  .site-gate-card {
+    background: #242b38; padding: 2rem 2.2rem; border-radius: 10px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.5); width: min(360px, 88vw);
+  }
+  .site-gate-card h2 { margin: 0 0 0.35rem; font-size: 1.2rem; font-weight: 600; }
+  .site-gate-card p  { margin: 0 0 1.2rem; font-size: 0.88rem; color: #9aa3b4; line-height: 1.45; }
+  .site-gate-card input {
+    width: 100%; padding: 0.7rem 0.85rem; border: 1px solid #3a4458; border-radius: 6px;
+    background: #1a1f2a; color: #e6e9ef; font-size: 1rem; font-family: inherit; box-sizing: border-box;
+  }
+  .site-gate-card input:focus { outline: none; border-color: #6aa4ff; }
+  .site-gate-card button {
+    width: 100%; margin-top: 0.7rem; padding: 0.7rem; border: none; border-radius: 6px;
+    background: #3b73d6; color: #fff; font-size: 1rem; font-weight: 500; cursor: pointer;
+  }
+  .site-gate-card button:hover { background: #4a82e5; }
+  .site-gate-error { color: #ff7a7a; font-size: 0.85rem; margin-top: 0.6rem; min-height: 1.1rem; }
+
   .hover-lightbox-trigger { cursor: zoom-in; transition: outline 0.15s; }
   .hover-lightbox-trigger:hover { outline: 2px solid #1565C0; }
 
@@ -24,6 +47,60 @@
     to   { opacity: 1; }
   }
 </style>
+
+<script>
+  // ── Simple site gate (deterrent only; not real security) ──
+  // Password = today's date in Asia/Taipei (yyyyMMdd). 30-day cookie.
+  (function () {
+    const COOKIE = 'house_gate';
+    const DAYS = 30;
+
+    const read = (n) => document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith(n + '=')) || '';
+    if (read(COOKIE)) return;
+
+    const todayPwd = () => {
+      const d = new Date();
+      return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0');
+    };
+    const setCookie = () => {
+      const e = new Date(); e.setTime(e.getTime() + DAYS * 864e5);
+      document.cookie = COOKIE + '=1; expires=' + e.toUTCString() + '; path=/; SameSite=Lax';
+    };
+
+    const build = () => {
+      const o = document.createElement('div');
+      o.className = 'site-gate-overlay';
+      o.innerHTML = `
+        <div class="site-gate-card">
+          <h2>私人工作區</h2>
+          <p>請輸入密碼。</p>
+          <input id="site-gate-input" type="password" autocomplete="off" autofocus>
+          <button id="site-gate-submit">進入</button>
+          <div class="site-gate-error" id="site-gate-err"></div>
+        </div>`;
+      document.body.appendChild(o);
+      document.body.style.overflow = 'hidden';
+
+      const input = o.querySelector('#site-gate-input');
+      const err = o.querySelector('#site-gate-err');
+      const tryEnter = () => {
+        if (input.value.trim() === todayPwd()) {
+          setCookie();
+          o.remove();
+          document.body.style.overflow = '';
+        } else {
+          err.textContent = '密碼錯誤';
+          input.select();
+        }
+      };
+      o.querySelector('#site-gate-submit').addEventListener('click', tryEnter);
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryEnter(); });
+    };
+
+    if (document.body) build();
+    else document.addEventListener('DOMContentLoaded', build);
+  })();
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
