@@ -152,7 +152,7 @@ nav_order: 2
 
 ## 十、架高工程
 
-**用途**：[C 房](../rooms/C/) 架高夾層 — **上層為儲藏空間**（置物），**下層為床 + 書桌**（[KL Board 壁掛翻轉床](../references/products/#kl-board--壁掛翻轉床--書桌murphy-bed) 裝在 [CW 牆](../walls/CW/)）。
+**用途**：[C 房](../rooms/C.md) 架高夾層 — **上層為儲藏空間**（置物），**下層為床 + 書桌**（[KL Board 壁掛翻轉床](../references/products/#kl-board--壁掛翻轉床--書桌murphy-bed) 裝在 [CW 牆](../walls/CW.md)）。
 
 | # | 品名 | 單位 | 數量 | 單價 | 複價 |
 |---:|---|---|---:|---:|---:|

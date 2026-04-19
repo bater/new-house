@@ -47,12 +47,12 @@ permalink: /budget/
 
 | 品項 | 用於 | 金額 (NT$) | 備註 |
 |---|---|---:|---|
-| [TA-175 升降茶几 / 餐桌](../references/products/#ta-175--多功能升降茶几--餐桌) | [A 房 · 客廳](../rooms/A/) | 138,000 | 合豐 |
-| [KL 120 Board 壁掛翻轉床](../references/products/#kl-board--壁掛翻轉床--書桌murphy-bed) | [C 房 · CW](../walls/CW/) | 154,000 | 合豐 · MB1 / LAZIO |
+| [TA-175 升降茶几 / 餐桌](../references/products/#ta-175--多功能升降茶几--餐桌) | [A 房 · 客廳](../rooms/A.md) | 138,000 | 合豐 |
+| [KL 120 Board 壁掛翻轉床](../references/products/#kl-board--壁掛翻轉床--書桌murphy-bed) | [C 房 · CW](../walls/CW.md) | 154,000 | 合豐 · MB1 / LAZIO |
 | └ KL 120 床頭片（FINLAND） | 同上 | 22,200 | 選配 |
-| [LD002 雙人壁掛翻轉床 + 書櫃](../references/products/#ld002--壁掛翻轉床雙人--移動式桌--書櫃) | [B 房 · BE](../walls/BE/) | 407,000 | 合豐 · NOCE / DESERTO |
+| [LD002 雙人壁掛翻轉床 + 書櫃](../references/products/#ld002--壁掛翻轉床雙人--移動式桌--書櫃) | [B 房 · BE](../walls/BE.md) | 407,000 | 合豐 · NOCE / DESERTO |
 | └ LD002 床頭片（PLUM） | 同上 | 14,500 | 選配 |
-| [Panasonic NR-E507XT-W1 · 502L 日製五門變頻冰箱](../references/products/#panasonic-nr-e507xt-w1--502l-日製五門變頻冰箱輕暖白) | [A 房 · 廚房 AW](../walls/AW/) | 47,872 | 輕暖白 · 燦坤提貨券 · 2027/01/07 前換貨 |
+| [Panasonic NR-E507XT-W1 · 502L 日製五門變頻冰箱](../references/products/#panasonic-nr-e507xt-w1--502l-日製五門變頻冰箱輕暖白) | [A 房 · 廚房 AW](../walls/AW.md) | 47,872 | 輕暖白 · 燦坤提貨券 · 2027/01/07 前換貨 |
 | **小計** | | **783,572** | |
 
 **付款進度**（合豐 60646）：訂金 NT$368,000 已付（2026-03-29），**尾款 NT$367,700 交貨時付**（預計 2026-09-29 ~ 2026-11-29）。

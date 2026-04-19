@@ -27,8 +27,8 @@ permalink: /walls/
 
 | 房間 | 北 (N) | 東 (E) | 南 (S) | 西 (W) |
 |---|---|---|---|---|
-| A 客廳+廚房 | [AN](./AN) | [AE](./AE) | [AS](./AS) | [AW](./AW) |
-| B 主臥房 | [BN](./BN) | [BE](./BE) | [BS](./BS) | [BW](./BW) |
-| C 次臥房 | [CN](./CN) | [CE](./CE) | [CS](./CS) | [CW](./CW) |
-| D 衛浴 | [DN](./DN) | [DE](./DE) | [DS](./DS) | [DW](./DW) |
-| F 陽台 | [FN](./FN) | [FE](./FE) | [FS](./FS) | [FW](./FW) *= AE* |
+| A 客廳+廚房 | [AN](./AN.md) | [AE](./AE.md) | [AS](./AS.md) | [AW](./AW.md) |
+| B 主臥房 | [BN](./BN.md) | [BE](./BE.md) | [BS](./BS.md) | [BW](./BW.md) |
+| C 次臥房 | [CN](./CN.md) | [CE](./CE.md) | [CS](./CS.md) | [CW](./CW.md) |
+| D 衛浴 | [DN](./DN.md) | [DE](./DE.md) | [DS](./DS.md) | [DW](./DW.md) |
+| F 陽台 | [FN](./FN.md) | [FE](./FE.md) | [FS](./FS.md) | [FW](./FW.md) *= AE* |

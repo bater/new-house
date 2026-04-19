@@ -18,7 +18,7 @@ nav_order: 1
 
 ### TA-175 · 多功能升降茶几 / 餐桌
 
-**合豐家具 Hefeng Furniture** · NT$138,000 · 用於 **[A 房 · 客廳](../rooms/A)**
+**合豐家具 Hefeng Furniture** · NT$138,000 · 用於 **[A 房 · 客廳](../rooms/A.md)**
 
 ![TA-175](../assets/images/products/TA-175.png){: .hover-lightbox-trigger }
 
@@ -43,7 +43,7 @@ nav_order: 1
 
 ### KL Board · 壁掛翻轉床 / 書桌（Murphy Bed）
 
-**合豐家具 Hefeng Furniture** · 用於 **[C 房 · 次臥](../rooms/C)** · [CW 牆](../walls/CW)
+**合豐家具 Hefeng Furniture** · 用於 **[C 房 · 次臥](../rooms/C.md)** · [CW 牆](../walls/CW.md)
 
 ![KL Board](../assets/images/products/KL-Board.png){: .hover-lightbox-trigger }
 
@@ -83,7 +83,7 @@ nav_order: 1
 
 ### Panasonic NR-E507XT-W1 · 502L 日製五門變頻冰箱（輕暖白）
 
-**燦坤 3C（TK3C）提貨券已購** · NT$47,872 · 用於 **[A 房 · 廚房 AW](../walls/AW)**（靠 AS 側）
+**燦坤 3C（TK3C）提貨券已購** · NT$47,872 · 用於 **[A 房 · 廚房 AW](../walls/AW.md)**（靠 AS 側）
 
 ![NR-E507XT-W1 規格表](../assets/images/products/panasonic-NR-E507XT-W1-spec.png){: .hover-lightbox-trigger width="500" }
 
@@ -107,7 +107,7 @@ nav_order: 1
 | 信託有效期 | **2026/01/07 – 2027/01/07**（務必在此區間換貨提領） |
 
 **待確認**：
-- [ ] 冰箱後方散熱縫隙 5–10 cm 且**接天花板新風通道**（見 [AW](../walls/AW)）
+- [ ] 冰箱後方散熱縫隙 5–10 cm 且**接天花板新風通道**（見 [AW](../walls/AW.md)）
 - [ ] 散熱通道需**防貓網**避免貓鑽入冰箱後
 - [ ] 電源插座位置（冰箱專用迴路），配合 AW 靠 AS 側角落
 - [ ] **在提貨券到期前（2027/01/07）換貨**
@@ -118,7 +118,7 @@ nav_order: 1
 
 ### LD002 · 壁掛翻轉床（雙人）+ 移動式桌 + 書櫃
 
-**合豐家具 Hefeng Furniture** · NT$407,000 · 用於 **[B 房 · 主臥](../rooms/B)** · 安裝於 **[BE 牆](../walls/BE)**（BW 牆為衣櫃）
+**合豐家具 Hefeng Furniture** · NT$407,000 · 用於 **[B 房 · 主臥](../rooms/B.md)** · 安裝於 **[BE 牆](../walls/BE.md)**（BW 牆為衣櫃）
 
 ![LD002](../assets/images/products/LD002.png){: .hover-lightbox-trigger }
 
